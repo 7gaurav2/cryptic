@@ -48,7 +48,7 @@ export const App: React.FC = () => {
       setActiveToolId(null);
       setVaultState('idle');
       setVaultProgress(0);
-      window.history.pushState({ page: 'landing', toolId: null }, '', window.location.pathname);
+      window.history.pushState({ page: 'landing', toolId: null }, '', window.location.pathname + window.location.search);
       logTelemetry('Returned to Cryptic master landing stage', 'info');
     }
 

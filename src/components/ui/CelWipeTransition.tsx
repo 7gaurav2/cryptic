@@ -41,10 +41,14 @@ export const CelWipeTransition: React.FC<CelWipeTransitionProps> = ({
   const peakFiredRef = useRef(false);
   const animFrameRef = useRef<number | null>(null);
 
-  // 1. Preload the spritesheet on mount
+  // 1. Preload the spritesheet on mount (respecting vite base path for GitHub Pages)
   useEffect(() => {
+    const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+    const webpPath = `${basePath}/cel-wipe/cel_wipe_sheet.webp`;
+    const pngPath = `${basePath}/cel-wipe/cel_wipe_sheet.png`;
+
     const img = new Image();
-    img.src = '/cel-wipe/cel_wipe_sheet.webp';
+    img.src = webpPath;
     img.onload = () => {
       sheetImageRef.current = img;
       setIsSheetLoaded(true);
@@ -52,7 +56,7 @@ export const CelWipeTransition: React.FC<CelWipeTransitionProps> = ({
     img.onerror = () => {
       // Fallback to PNG if WebP fails
       const pngImg = new Image();
-      pngImg.src = '/cel-wipe/cel_wipe_sheet.png';
+      pngImg.src = pngPath;
       pngImg.onload = () => {
         sheetImageRef.current = pngImg;
         setIsSheetLoaded(true);
