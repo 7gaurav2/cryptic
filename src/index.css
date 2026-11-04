@@ -1,0 +1,384 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #EAE6DF;
+  --bg-surface: #F4F1EA;
+  --bg-recessed: #DDD8CE;
+  --bg-chassis-dark: #232220;
+  --text-primary: #111622;
+  --text-secondary: #4B5563;
+  --text-muted: #8C867E;
+  --accent-primary: #D21319;
+  --accent-crimson-glow: #EF4444;
+  --accent-sage: #059669;
+  --accent-amber: #B8860B;
+  --border-hairline: #D0C9BD;
+  --shadow-tactile: rgba(28, 27, 25, 0.08);
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #ECE9E1 0%, #DFDBD1 60%, #D4D0C5 100%);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.015em;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'Beyno';
+  src: url('/beyno.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-beyno {
+  font-family: 'Beyno', 'Space Grotesk', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+code, pre, .font-mono, [data-mono], .font-mono-numbers {
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+}
+
+.font-poster {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+/* 3D Perspective Utilities */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Mechanical Hardware Press */
+.mechanical-press {
+  transition: transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 120ms ease;
+}
+
+.mechanical-press:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(28, 27, 25, 0.2) !important;
+}
+
+/* Stitch Claymorphic & Tactile Stone Panels */
+.clay-surface {
+  background: linear-gradient(175deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 244, 239, 0.96) 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 18px 36px -12px rgba(45, 52, 64, 0.10),
+    0 4px 12px rgba(45, 52, 64, 0.04),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clay-surface:hover {
+  box-shadow: 
+    0 24px 44px -10px rgba(45, 52, 64, 0.16),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+/* Clay Well / Sunken Recessed Tray */
+.clay-recessed {
+  background: #E8E5DD;
+  border-radius: 16px;
+  box-shadow: 
+    inset 2px 2px 6px rgba(40, 44, 52, 0.12),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.85),
+    0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(195, 190, 180, 0.45);
+}
+
+
+
+/* Tactile Deep Charcoal Button */
+.btn-clay-navy {
+  background: linear-gradient(180deg, #222732 0%, #161A22 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    0 10px 20px -5px rgba(20, 24, 33, 0.3),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.28),
+    inset -1px -2px 3px rgba(0, 0, 0, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-clay-navy:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 14px 26px -5px rgba(210, 19, 25, 0.25),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.38);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Crisp Light Architectural Buttons */
+.btn-stone-card {
+  background: #FFFFFF;
+  border: 1px solid #D5D1C7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.15s ease-out;
+}
+
+.btn-stone-card:hover {
+  background: #F3F1EC;
+  border-color: #B91C1C;
+  color: #111622;
+  transform: translateY(-1px);
+}
+
+.frosted-glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(45, 52, 64, 0.06);
+}
+
+.frosted-obsidian-glass {
+  background: rgba(26, 31, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 20px 40px -10px rgba(18, 22, 30, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.frosted-crimson-glass {
+  background: rgba(210, 19, 25, 0.09);
+  border: 1px solid rgba(210, 19, 25, 0.25);
+}
+
+/* 3D Visual Centerpiece Lighting & Shading */
+.clay-sculpture {
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #E2DFD6 55%, #A8A396 100%);
+  box-shadow: 
+    -15px 25px 45px rgba(40, 45, 55, 0.22),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(60, 65, 75, 0.35);
+}
+
+.glass-shield-curved {
+  background: linear-gradient(135deg, rgba(220, 25, 32, 0.88) 0%, rgba(185, 28, 28, 0.82) 100%);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-left: 1px solid rgba(255, 255, 255, 0.45);
+  border-right: 1px solid rgba(239, 68, 68, 0.5);
+  border-bottom: 1px solid rgba(153, 27, 27, 0.5);
+  box-shadow: 
+    0 25px 50px -10px rgba(210, 19, 25, 0.35),
+    0 10px 20px rgba(0, 0, 0, 0.12),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.clay-pill-crimson {
+  background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%);
+  box-shadow: 
+    0 4px 10px -2px rgba(210, 19, 25, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.45);
+}
+
+/* Animations */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.15); }
+}
+.pulse-dot {
+  animation: subtle-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+.floating-piece {
+  animation: gentle-float 6s infinite ease-in-out;
+}
+
+@keyframes gentle-float-alt {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(7px) rotate(0.8deg); }
+}
+.floating-piece-alt {
+  animation: gentle-float-alt 7s infinite ease-in-out;
+}
+
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hairline);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ========================================================================= */
+/* DARK THEME STYLING                                                        */
+/* ========================================================================= */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: radial-gradient(circle at 50% 0%, #151922 0%, #0D1017 60%, #080A0F 100%) !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark header {
+  background: rgba(18, 22, 30, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #E2E8F0 !important;
+}
+
+html.dark .clay-surface {
+  background: linear-gradient(175deg, rgba(28, 34, 46, 0.95) 0%, rgba(18, 22, 30, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 
+    0 20px 40px -12px rgba(0, 0, 0, 0.65),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .clay-recessed {
+  background: #10141D !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 
+    inset 2px 2px 8px rgba(0, 0, 0, 0.7),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.04) !important;
+}
+
+html.dark .btn-stone-card {
+  background: linear-gradient(180deg, #2B3344 0%, #1A202C 100%) !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3 {
+  color: #FFFFFF !important;
+}
+
+html.dark .text-\[\#111622\],
+html.dark .text-\[\#1E232A\] {
+  color: #F8FAFC !important;
+}
+
+html.dark .text-\[\#4B5563\],
+html.dark .text-\[\#555E6D\],
+html.dark .text-\[\#374151\] {
+  color: #94A3B8 !important;
+}
+
+html.dark .bg-white {
+  background-color: #1A212D !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark .bg-white\/90,
+html.dark .bg-white\/85,
+html.dark .bg-white\/75 {
+  background-color: rgba(24, 30, 42, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .border-\[\#D3CEBF\],
+html.dark .border-\[\#D5D1C7\],
+html.dark .border-\[\#D5D0C3\],
+html.dark .border-\[\#C5BFB0\] {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .mandala-bg svg {
+  color: #475569 !important;
+  opacity: 0.16 !important;
+}
+
+/* Character-Level Text Shimmer Wave Animation */
+@keyframes text-shimmer-wave {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translateY(0) scale(1);
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.05);
+    filter: brightness(1.4) drop-shadow(0 0 4px rgba(255, 255, 255, 0.75));
+    color: #ffffff;
+  }
+}
+
+/* ========================================================================= */
+/* TACTICAL CLIP WIPE PAGE TRANSITION                                        */
+/* ========================================================================= */
+@keyframes clipWipeIn {
+  0% {
+    clip-path: polygon(-25% 0%, -25% 0%, -40% 100%, -40% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 125% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes clipWipeOut {
+  0% {
+    clip-path: polygon(0% 0%, 125% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(125% 0%, 125% 0%, 100% 100%, 100% 100%);
+  }
+}
+
+@keyframes clipWipeLeadIn {
+  0% {
+    clip-path: polygon(-25% 0%, -25% 0%, -40% 100%, -40% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 132% 0%, 107% 100%, 0% 100%);
+  }
+}
+
+@keyframes clipWipeLeadOut {
+  0% {
+    clip-path: polygon(0% 0%, 132% 0%, 107% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(132% 0%, 132% 0%, 107% 100%, 107% 100%);
+  }
+}
+
+.clip-wipe-main-in {
+  animation: clipWipeIn 0.32s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  will-change: clip-path;
+}
+
+.clip-wipe-main-out {
+  animation: clipWipeOut 0.32s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  will-change: clip-path;
+}
+
+.clip-wipe-lead-in {
+  animation: clipWipeLeadIn 0.32s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  will-change: clip-path;
+}
+
+.clip-wipe-lead-out {
+  animation: clipWipeLeadOut 0.32s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  will-change: clip-path;
+}
+
+
